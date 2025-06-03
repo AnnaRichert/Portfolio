@@ -1,1 +1,0 @@
-SQL - exploratory data analysis
