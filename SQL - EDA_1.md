@@ -1,5 +1,5 @@
 ## Exploratory Data Analysis in SQL
-### Project 1
+### :bar_chart: Project 1
 
 Exploring datasets from BusinessFinancing.co.uk regarding the oldest companies in business in almost every country.
 
@@ -29,15 +29,15 @@ The Data:
 |category_code|Code for the business category (varchar)   |
 |category     |Description of the business category (varchar)|
 
-## 1. What is the oldest business on each continent?
+## :one: What is the oldest business on each continent?
 
 ````sql
 WITH sub AS (
-      SELECT c.continent, MIN(year_founded) AS min_year
-      FROM businesses AS b
-      LEFT JOIN countries AS c
-      ON b.country_code=c.country_code
-      GROUP BY c.continent),
+	SELECT c.continent, MIN(year_founded) AS min_year
+	FROM businesses AS b
+	LEFT JOIN countries AS c
+	ON b.country_code=c.country_code
+	GROUP BY c.continent),
     sub1 AS (SELECT b.country_code, b.business, b.year_founded
             FROM businesses AS b
             RIGHT JOIN sub
@@ -58,15 +58,16 @@ ON sub1.country_code=c.country_code
 |Africa       |Mauritius                                  |Mauritius Post             |1772        |
 |South America|Peru                                       |Casa Nacional de Moneda    |1565        |
 
-## 2. How many countries per continent lack data on the oldest businesses? Count the number of countries per continent missing business data, including `new_businesses`
+## :two: How many countries per continent lack data on the oldest businesses? Count the number of countries per continent missing business data, including `new_businesses`
 
 ````sql
-WITH sub AS (SELECT country_code
-            FROM countries
-            WHERE country_code NOT IN (SELECT country_code
-                                      FROM businesses)
+WITH sub AS (
+	SELECT country_code
+	FROM countries
+	WHERE country_code NOT IN (SELECT country_code
+				FROM businesses)
             AND country_code NOT IN (SELECT country_code
-                        FROM new_businesses))
+				FROM new_businesses))
 SELECT continent, COUNT(sub.country_code) AS countries_without_businesses
 FROM sub
 LEFT JOIN countries AS c
@@ -84,10 +85,11 @@ ORDER BY continent
 |Oceania      |10                                         |
 |South America|3                                          |
 
-## 3. Which business categories are best suited to last many years, and on what continent are they? Store your answer with the oldest founding year for each continent and category combination.
+## :three: Which business categories are best suited to last many years, and on what continent are they? Store your answer with the oldest founding year for each continent and category combination.
 
 ````sql
-WITH sub AS (SELECT MIN(year_founded) AS year_founded,category_code, continent
+WITH sub AS (
+	SELECT MIN(year_founded) AS year_founded,category_code, continent
 	FROM businesses AS b
 	LEFT JOIN countries AS c
 	ON b.country_code=c.country_code
