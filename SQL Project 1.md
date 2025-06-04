@@ -1,4 +1,4 @@
-## Exploratory Data Analysis in SQL
+## SQL
 ### :bar_chart: Project 1
 
 Exploring datasets from BusinessFinancing.co.uk regarding the oldest companies in business in almost every country.
