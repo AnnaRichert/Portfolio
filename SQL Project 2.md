@@ -44,7 +44,7 @@ The Data:
 |sub_category|Sub Category Product belongs to     |TEXT            |
 |product_name|Detailed Name of the Product        |TEXT            |
 
-## :one: Find the top 5 products from each category based on highest total sales. The output should be sorted by `category` in ascending order and by `sales` in descending order within each category, i.e. within each category product with highest margin should sit on the top
+## :one: Find the top 5 products from each category based on highest total sales. The output should be sorted by `category` in ascending order and by `sales` in descending order within each category, i.e. within each category product with highest margin should sit on the top.
 
 ````sql
 WITH sub AS (
@@ -83,7 +83,7 @@ WHERE product_rank <= 5
 |Technology|Canon imageCLASS 2200 Advanced Copier|61599.82           |25199.93            |5           |
 
 
-## :two: Calculate the quantity for orders with missing values in the `quantity` column by determining the unit price for each `product_id` using available order data, considering relevant pricing factors such as discount, market, or region. Then, use this unit price to estimate the missing quantity values.
+## :two: Calculate the quantity for orders with missing values in the `quantity` column by determining the unit price for each `product_id` using available order data, considering relevant pricing factors such as discount, market, or region. Then, use this unit price to estimate the missing quantity values. The calculated values should be stored in the `calculated_quantity` column.
 
 ````sql
 WITH missing AS (
