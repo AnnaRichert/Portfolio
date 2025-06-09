@@ -9,6 +9,8 @@ The Data:
 
 
 ````python
+import pandas as pd
+schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
 schools.head()
 ````
 
@@ -28,7 +30,7 @@ schools.head()
 
 ````python
 import pandas as pd
-schools = pd.read_csv("schools.csv")
+schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
 best_schools = schools.query('average_math >= 640').sort_values('average_math', ascending= False)
 best_math_schools = best_schools[['school_name', 'average_math']]
 print(best_math_schools)
@@ -54,7 +56,7 @@ print(best_math_schools)
 
 ````python
 import pandas as pd
-schools = pd.read_csv("schools.csv")
+schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
 schools_sorted = schools.sort_values('total_SAT', ascending = False)
 top_10_schools=schools_sorted[['school_name', 'total_SAT']].head(10)
@@ -88,7 +90,7 @@ print(top_10_schools)
 
 ````python
 import pandas as pd
-schools = pd.read_csv("schools.csv")
+schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
 schools_agg = schools.groupby ('borough') ['total_SAT'].agg(['count', 'mean', 'std']).round(2)
 schools_sorted = schools_agg.sort_values('std', ascending = False)
