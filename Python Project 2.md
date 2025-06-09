@@ -14,13 +14,13 @@ schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
 schools.head()
 ````
 
-|school_name                                   |borough|building_code|average_math|average_reading|average_writing|percent_tested|FIELD8|
-|----------------------------------------------|-------|-------------|------------|---------------|---------------|--------------|------|
-|New Explorations into Science                 | Technology and Math High School|Manhattan    |M022        |657            |601            |601           |      |
-|Essex Street Academy                          |Manhattan|M445         |395         |411            |387            |78.9          |      |
-|Lower Manhattan Arts Academy                  |Manhattan|M445         |418         |428            |415            |65.1          |      |
-|High School for Dual Language and Asian Studies|Manhattan|M445         |613         |453            |463            |95.9          |      |
-|Henry Street School for International Studies |Manhattan|M056         |410         |406            |381            |59.7          |      |
+|school_name                                   |borough|building_code|average_math|average_reading|average_writing|percent_tested|
+|----------------------------------------------|-------|-------------|------------|---------------|---------------|--------------|
+|New Explorations into Science Technology and Math High School|Manhattan    |M022        |657            |601            |601           |
+|Essex Street Academy                          |Manhattan|M445         |395         |411            |387            |78.9          |
+|Lower Manhattan Arts Academy                  |Manhattan|M445         |418         |428            |415            |65.1          |
+|High School for Dual Language and Asian Studies|Manhattan|M445         |613         |453            |463            |95.9          |
+|Henry Street School for International Studies |Manhattan|M056         |410         |406            |381            |59.7          |
 
 
 ## :one: Which NYC schools have the best math results?
@@ -37,18 +37,18 @@ print(best_math_schools)
 ````
 **Results**
 
-|school_name                                   |average_math|FIELD3|FIELD4|
-|----------------------------------------------|------------|------|------|
-|Stuyvesant High School                        |754         |      |      |
-|Bronx High School of Science                  |714         |      |      |
-|Staten Island Technical High School           |711         |      |      |
-|Queens High School for the Sciences at York College|701         |      |      |
-|High School for Mathematics                   | Science    | and Engineering at City College|683   |
-|Brooklyn Technical High School                |682         |      |      |
-|Townsend Harris High School                   |680         |      |      |
-|High School of American Studies at Lehman College|669         |      |      |
-|New Explorations into Science                 | Technology and Math High School|657   |      |
-|Eleanor Roosevelt High School                 |641         |      |      |
+|school_name                                   |average_math|
+|----------------------------------------------|------------|
+|Stuyvesant High School                        |754         |
+|Bronx High School of Science                  |714         |
+|Staten Island Technical High School           |711         |
+|Queens High School for the Sciences at York College|701         |
+|High School for Mathematics Science and Engineering at City College|683   |
+|Brooklyn Technical High School                |682         |
+|Townsend Harris High School                   |680         |
+|High School of American Studies at Lehman College|669         |
+|New Explorations into Science Technology and Math High School|657   |
+|Eleanor Roosevelt High School                 |641         |
 
 
 ## :two: What are the top 10 performing schools based on the combined SAT scores?
@@ -64,18 +64,18 @@ print(top_10_schools)
 ````
 **Results**
 
-|school_name                                   |total_SAT|FIELD3|FIELD4|
-|----------------------------------------------|---------|------|------|
-|Stuyvesant High School                        |2144     |      |      |
-|Bronx High School of Science                  |2041     |      |      |
-|Staten Island Technical High School           |2041     |      |      |
-|High School of American Studies at Lehman College|2013     |      |      |
-|Townsend Harris High School                   |1981     |      |      |
-|Queens High School for the Sciences at York College|1947     |      |      |
-|Bard High School Early College                |1914     |      |      |
-|Brooklyn Technical High School                |1896     |      |      |
-|Eleanor Roosevelt High School                 |1889     |      |      |
-|High School for Mathematics                   | Science | and Engineering at City College|1889  |
+|school_name                                   |total_SAT|
+|----------------------------------------------|---------|
+|Stuyvesant High School                        |2144     |
+|Bronx High School of Science                  |2041     |
+|Staten Island Technical High School           |2041     |
+|High School of American Studies at Lehman College|2013     |
+|Townsend Harris High School                   |1981     |
+|Queens High School for the Sciences at York College|1947     |
+|Bard High School Early College                |1914     |
+|Brooklyn Technical High School                |1896     |
+|Eleanor Roosevelt High School                 |1889     |
+|High School for Mathematics Science and Engineering at City College|1889  |
 
 
 ## :three: Which single borough has the largest standard deviation in the combined SAT score?
