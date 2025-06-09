@@ -10,8 +10,7 @@ Records of financial contributions, linked to specific donors and assignments, h
 - `Donors`: Information on individuals and organizations that fund GoodThought’s projects, including donor types.
 
 The below ERD diagram shows a visual representation of the relationships between these data tables:
-
-
+![diagram](https://github.com/user-attachments/assets/79bf6223-aefd-4599-920f-5e5890ec1258)
 ## :one: List the top five assignments based on total value of donations, categorized by donor type. The output should include four columns: 1) `assignment_name`, 2) `region`, 3) `rounded_total_donation_amount` rounded to two decimal places, and 4) `donor_type`, sorted by `rounded_total_donation_amount` in descending order. 
 
 ````sql
