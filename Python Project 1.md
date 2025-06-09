@@ -80,7 +80,8 @@ plt.show()
 ````
 **Results**
 
-![plot](https://github.com/user-attachments/assets/e3029c1c-d4e3-4a12-9622-a86cb8bc9763)
+![plot](https://github.com/user-attachments/assets/af4ccb1c-f94b-470d-8848-c6848866c010)
+
 
 ## :two: How many matches finished with a point difference greater than 40?
 
