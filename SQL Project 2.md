@@ -92,7 +92,7 @@ WITH missing AS (
               WHERE quantity IS NULL), 
 unit_prices AS (
               SELECT o.product_id, CAST(o.sales / o.quantity AS NUMERIC) AS unit_price
-              FROM orders o
+              FROM orders AS o
               RIGHT JOIN missing AS m 
               ON o.product_id = m.product_id
               AND o.discount = m.discount
