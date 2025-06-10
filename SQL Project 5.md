@@ -13,7 +13,7 @@ The UCL defines the highest acceptable height for the parts, while the LCL defin
 
 The Data:
 
-The data is available in the `manufacturing_parts` table which has the following fields:
+The data is available in the `manufacturing_parts` dataset which has the following fields:
 
 - `item_no`: the item number
 - `length`: the length of the item made
