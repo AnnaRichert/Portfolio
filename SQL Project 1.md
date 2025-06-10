@@ -89,7 +89,7 @@ ORDER BY continent
 
 ````sql
 WITH sub AS (
-	SELECT MIN(year_founded) AS year_founded,category_code, continent
+	SELECT MIN(year_founded) AS year_founded, category_code, continent
 	FROM businesses AS b
 	LEFT JOIN countries AS c
 	ON b.country_code=c.country_code
