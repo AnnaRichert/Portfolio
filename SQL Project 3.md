@@ -1,7 +1,7 @@
 ## SQL
 ### :bar_chart: Project 3
 
-Exploring GoodThought NGO database which encapsulates detailed records of assignments, funding, impacts, and donor activities from 2010 to 2023. This comprehensive dataset includes:
+Exploring GoodThought NGO database with detailed records of assignments, funding, impacts, and donor activities from 2010 to 2023. This comprehensive dataset includes:
 
 - `Assignments`:
 Details about each project, including its name, duration (start and end dates), budget, geographical region, and the impact score.
