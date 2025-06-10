@@ -11,15 +11,33 @@ $lcl = avgheight - 3 * \frac{stddevheight}{\sqrt{5}}$
 
 The UCL defines the highest acceptable height for the parts, while the LCL defines the lowest acceptable height for the parts. Ideally, parts should fall between the two limits.
 
-The Data:
+- **`manufacturing_parts`** dataset has the following fields:
 
-The data is available in the `manufacturing_parts` dataset which has the following fields:
+`item_no`: the item number
 
-- `item_no`: the item number
-- `length`: the length of the item made
-- `width`: the width of the item made
-- `height`: the height of the item made
-- `operator`: the operating machine
+`length`: the length of the item made
+
+`width`: the width of the item made
+
+`height`: the height of the item made
+
+`operator`: the operating machine
+
+
+````sql
+SELECT *
+FROM manufacturing_parts
+LIMIT 5
+````
+
+|item_no                       |length|width      |height       |operator     |
+|------------------------------|------|-----------|-------------|-------------|
+|1                             |102.67|49.53      |19.69        |Op-1         |
+|2                             |102.5 |51.42      |19.63        |Op-1         |
+|3                             |95.37 |52.25      |21.51        |Op-1         |
+|4                             |94.77 |49.24      |18.6         |Op-1         |
+|5                             |104.26|47.9       |19.46        |Op-1         |
+
 
 ## Create an alert that flags whether the height of a product is within the control limits for each `operator` using the formulas provided above. The final query should return the following fields: `operator`, `row_number`, `height`, `avg_height`, `stddev_height`, `ucl`, `lcl`, `alert`, and be ordered by the `item_no`. The alert column should be a boolean flag. Calculate the control limits, considering rows up to and including the current row; incomplete windows should be excluded from the final query output.
 
