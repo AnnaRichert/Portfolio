@@ -25,7 +25,7 @@ The Data:
 
 ````python
 import pandas as pd
-crimes = pd.read_csv("crimes.csv")
+crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv")
 crimes.head()
 ````
 |DR_NO    |Date Rptd |DATE OCC  |TIME OCC|AREA NAME  |Crm Cd Desc      |Vict Age|Vict Sex|Vict Descent|Weapon Desc|Status Desc|LOCATION                               |
@@ -44,7 +44,7 @@ crimes.head()
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-crimes = pd.read_csv("crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
 sns.countplot(x='hour', data=crimes)
 plt.show()
@@ -57,7 +57,7 @@ plt.show()
 
 ````python
 import pandas as pd
-crimes = pd.read_csv("crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
 night=crimes[(crimes['TIME OCC']>='2200') | (crimes['TIME OCC']<='0359')]
 peak_night_crime_location=night.groupby("AREA NAME")["hour"].count().sort_values(ascending=False).index[0]
@@ -71,7 +71,7 @@ Central
 
 ````python
 import pandas as pd
-crimes = pd.read_csv("crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
 bins=[0,17,25,34,44,54,64,crimes['Vict Age'].max()]
 labels=["0-17", "18-25", "26-34", "35-44", "45-54", "55-64", "65+"]
 crimes['victim_ages']=pd.cut(crimes['Vict Age'],labels=labels,bins=bins)
