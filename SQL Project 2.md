@@ -5,7 +5,7 @@ Exploring datasets from a hypothetical Super Store.
 
 The Data:
 
-- `orders`
+- **`orders`**
 
 |Column    |Definition                          |Data type       |Comments                                     |
 |----------|------------------------------------|----------------|---------------------------------------------|
@@ -20,7 +20,24 @@ The Data:
 |discount  |Discount applied for the Line Item  |DOUBLE PRECISION|                                             |
 |profit    |Total Profit earned on the Line Item|DOUBLE PRECISION|                                             |
 
-- `returned_orders`
+
+````sql
+SELECT *
+FROM orders
+LIMIT 5
+````
+
+|row_id                        |order_id|order_date             |ship_date              |ship_mode     |customer_id|customer_name   |segment  |city         |state           |country      |postal_code|market|region        |product_id     |sales   |quantity|discount|profit  |shipping_cost|order_priority|
+|------------------------------|--------|-----------------------|-----------------------|--------------|-----------|----------------|---------|-------------|----------------|-------------|-----------|------|--------------|---------------|--------|--------|--------|--------|-------------|--------------|
+|957                           |MX-2014-105921|2014-05-28T00:00:00.000|2014-06-03T00:00:00.000|Standard Class|ZC-21910   |Zuschuss Carroll|Consumer |San Salvador |San Salvador    |El Salvador  |           |LATAM |Central       |TEC-AC-10004626|342.08  |2       |0       |0       |21.713       |Medium        |
+|24359                         |ID-2013-61442|2013-01-15T00:00:00.000|2013-01-21T00:00:00.000|Standard Class|JB-16000   |Joy Bell-       |Consumer |Manila       |National Capital|Philippines  |           |APAC  |Southeast Asia|OFF-BI-10001400|122.4   |5       |0.15    |0       |21.71        |Low           |
+|32298                         |CA-2012-124891|2012-07-31T00:00:00.000|2012-07-31T00:00:00.000|Same Day      |RH-19495   |Rick Hansen     |Consumer |New York City|New York        |United States|10024      |US    |East          |TEC-AC-10003033|2309.65 |7       |0       |762.1845|933.57       |Critical      |
+|26341                         |IN-2013-77878|2013-02-05T00:00:00.000|2013-02-07T00:00:00.000|Second Class  |JR-16210   |Justin Ritter   |Corporate|Wollongong   |New South Wales |Australia    |           |APAC  |Oceania       |FUR-CH-10003950|3709.395|9       |0.1     |-288.765|923.63       |Critical      |
+|25330                         |IN-2013-71249|2013-10-17T00:00:00.000|2013-10-18T00:00:00.000|First Class   |CR-12730   |Craig Reiter    |Consumer |Brisbane     |Queensland      |Australia    |           |APAC  |Oceania       |TEC-PH-10004664|5175.171|9       |0.1     |919.971 |915.49       |Medium        |
+
+
+
+- **`returned_orders`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
@@ -28,14 +45,44 @@ The Data:
 |order_id  |Identifier for each order in table  |TEXT            |
 |market    |Market order_id belongs to          |TEXT            |
 
-- `people`
+````sql
+SELECT *
+FROM returned_orders
+LIMIT 5
+````
+
+|returned                      |order_id|market                 |
+|------------------------------|--------|-----------------------|
+|Yes                           |MX-2013-168137|LATAM                  |
+|Yes                           |US-2011-165316|LATAM                  |
+|Yes                           |ES-2013-1525878|EU                     |
+|Yes                           |CA-2013-118311|United States          |
+|Yes                           |ES-2011-1276768|EU                     |
+
+
+- **`people`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
 |person    |Name of Salesperson credited with Order|TEXT            |
 |region    |Region Salesperson in operating in  |TEXT            |
 
-- `products`
+````sql
+SELECT *
+FROM people
+LIMIT 5
+````
+
+|region                        |person|
+|------------------------------|------|
+|Central                       |Anna Andreadi|
+|South                         |Chuck Magee|
+|East                          |Kelly Williams|
+|West                          |Matt Collister|
+|Africa                        |Deborah Brumfield|
+
+
+- **`products`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
@@ -43,6 +90,22 @@ The Data:
 |category  |Category Product belongs to         |TEXT            |
 |sub_category|Sub Category Product belongs to     |TEXT            |
 |product_name|Detailed Name of the Product        |TEXT            |
+
+
+````sql
+SELECT *
+FROM products
+LIMIT 5
+````
+
+|product_id                    |category|sub_category|product_name                                                      |
+|------------------------------|--------|------------|------------------------------------------------------------------|
+|TEC-AC-10003033               |Technology|Accessories |Plantronics CS510 - Over-the-Head monaural Wireless Headset System|
+|FUR-CH-10003950               |Furniture|Chairs      |Novimex Executive Leather Armchair, Black                         |
+|TEC-PH-10004664               |Technology|Phones      |Nokia Smart Phone, with Caller ID                                 |
+|TEC-PH-10004583               |Technology|Phones      |Motorola Smart Phone, Cordless                                    |
+|TEC-SHA-10000501              |Technology|Copiers     |Sharp Wireless Fax, High-Speed                                    |
+
 
 ## :one: Find the top 5 products from each category based on highest total sales. The output should be sorted by `category` in ascending order and by `sales` in descending order within each category, i.e. within each category product with highest margin should sit on the top.
 
