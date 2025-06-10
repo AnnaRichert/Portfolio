@@ -5,7 +5,7 @@ Exploring database `unicorns` to analyze trends in high-growth companies (unicor
 
 The Data:
 
-- `dates`
+- **`dates`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -13,8 +13,22 @@ The Data:
 |date_joined|The date that the company became a unicorn.|
 |year_founded|The year that the company was founded.|
 
+````sql
+SELECT *
+FROM dates
+LIMIT 5
+````
 
-- `funding`
+|company_id                    |date_joined|year_founded|
+|------------------------------|-----------|------------|
+|189                           |2017-06-24T00:00:00.000|1919        |
+|848                           |2021-06-01T00:00:00.000|2019        |
+|556                           |2022-02-15T00:00:00.000|2011        |
+|999                           |2021-11-17T00:00:00.000|2020        |
+|396                           |2021-10-21T00:00:00.000|2021        |
+
+
+- **`funding`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -23,15 +37,45 @@ The Data:
 |funding   |The amount of funding raised in US dollars.|
 |select_investors|A list of key investors in the company.|
 
+````sql
+SELECT *
+FROM funding
+LIMIT 5
+````
 
-- `industries`
+|company_id                    |valuation|funding    |select_investors                                      |
+|------------------------------|---------|-----------|------------------------------------------------------|
+|189                           |4000000000|0          |EQT Partners                                          |
+|848                           |1000000000|100000000  |Dragonfly Captial, Qiming Venture Partners, DST Global|
+|556                           |2000000000|100000000  |Blackstone, Bessemer Venture Partners                 |
+|999                           |1000000000|100000000  |Goldman Sachs Asset Management, 3L                    |
+|396                           |2000000000|100000000  |Insight Partners, Softbank Group, Connect Ventures    |
+
+
+- **`industries`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
 |company_id|A unique ID for the company.        |
 |industry  |The industry that the company operates in.|
 
-- `companies`
+````sql
+SELECT *
+FROM industries
+LIMIT 5
+````
+
+|company_id                    |industry|
+|------------------------------|--------|
+|189                           |Health  |
+|848                           |Fintech |
+|556                           |Internet software & services|
+|999                           |Internet software & services|
+|396                           |Fintech |
+
+
+
+- **`companies`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -40,6 +84,20 @@ The Data:
 |city      |The city where the company is headquartered.|
 |country   |The country where the company is headquartered.|
 |continent |The continent where the company is headquartered.|
+
+````sql
+SELECT *
+FROM companies
+LIMIT 5
+````
+
+|company_id                    |company|city       |country      |continent    |
+|------------------------------|-------|-----------|-------------|-------------|
+|189                           |Otto Bock HealthCare|Duderstadt |Germany      |Europe       |
+|848                           |Matrixport|           |Singapore    |Asia         |
+|556                           |Cloudinary|Santa Clara|United States|North America|
+|999                           |PLACE  |Bellingham |United States|North America|
+|396                           |candy.com|New York   |United States|North America|
 
 
 ### :one: First, we need to identify the three best-performing industries based on the number of new unicorns created in 2019, 2020, and 2021 combined.
