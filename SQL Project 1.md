@@ -5,7 +5,7 @@ Exploring datasets from BusinessFinancing.co.uk regarding the oldest companies i
 
 The Data:
 
-- `businesses` and `new_businesses`
+- **`businesses`** and **`new_businesses`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
@@ -15,9 +15,32 @@ The Data:
 |country_code |ISO 3166-1 three-letter country code (char)|
 
 ````sql
+SELECT *
+FROM businesses
+LIMIT 5
+````
+
+|business                      |year_founded|category_code|country_code|
+|------------------------------|------------|-------------|------------|
+|Hamoud Boualem                |1878        |CAT11        |DZA         |
+|Communauté Électrique du Bénin|1968        |CAT10        |BEN         |
+|Botswana Meat Commission      |1965        |CAT1         |BWA         |
+|Air Burkina                   |1967        |CAT2         |BFA         |
+|Brarudi                       |1955        |CAT9         |BDI         |
+
+````sql
+SELECT *
+FROM new_businesses
+````
+
+|business                      |year_founded|category_code|country_code|
+|------------------------------|------------|-------------|------------|
+|Fiji Times                    |1869        |CAT13        |FJI         |
+|J. Armando Bermúdez & Co.     |1852        |CAT9         |DOM         |
 
 
-- `countries`
+
+- **`countries`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
@@ -25,12 +48,41 @@ The Data:
 |country      |Name of the country (varchar)              |
 |continent    |Name of the continent the country exists in (varchar)|
 
-- `categories`
+````sql
+SELECT *
+FROM countries
+LIMIT 5
+````
+
+|country_code                  |country|continent|
+|------------------------------|-------|---------|
+|AFG                           |Afghanistan|Asia     |
+|AGO                           |Angola |Africa   |
+|ALB                           |Albania|Europe   |
+|AND                           |Andorra|Europe   |
+|ARE                           |United Arab Emirates|Asia     |
+
+
+- **`categories`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
 |category_code|Code for the business category (varchar)   |
 |category     |Description of the business category (varchar)|
+
+````sql
+SELECT *
+FROM categories
+LIMIT 5
+````
+|category_code                 |category|
+|------------------------------|--------|
+|CAT1                          |Agriculture|
+|CAT2                          |Aviation & Transport|
+|CAT3                          |Banking & Finance|
+|CAT4                          |Cafés, Restaurants & Bars|
+|CAT5                          |Conglomerate|
+
 
 ## :one: What is the oldest business on each continent?
 
