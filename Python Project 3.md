@@ -47,13 +47,14 @@ import pandas as pd
 crimes = pd.read_csv("crimes.csv")
 crimes.head()
 ````
-|super_bowl  |musician                                                                          |num_songs|
-|------------|----------------------------------------------------------------------------------|---------|
-|52          |Justin Timberlake                                                                 |11       |
-|52          |University of Minnesota Marching Band                                             |1        |
-|51          |Lady Gaga                                                                         |7        |
-|50          |Coldplay                                                                          |6        |
-|50          |Beyoncé                                                                           |3        |
+|DR_NO    |Date Rptd |DATE OCC  |TIME OCC|AREA NAME  |Crm Cd Desc      |Vict Age|Vict Sex|Vict Descent|Weapon Desc|Status Desc|LOCATION                               |
+|---------|----------|----------|--------|-----------|-----------------|--------|--------|------------|-----------|-----------|---------------------------------------|
+|220314085|2022-07-22|2020-05-12|1110    |Southwest  |THEFT OF IDENTITY|27      |F       |B           |null       |Invest Cont|2500 S  SYCAMORE                     AV|
+|222013040|2022-08-06|2020-06-04|1620    |Olympic    |THEFT OF IDENTITY|60      |M       |H           |null       |Invest Cont|3300    SAN MARINO                   ST|
+|220614831|2022-08-18|2020-08-17|1200    |Hollywood  |THEFT OF IDENTITY|28      |M       |H           |null       |Invest Cont|1900    TRANSIENT                      |
+|231207725|2023-02-27|2020-01-27|635     |77th Street|THEFT OF IDENTITY|37      |M       |H           |null       |Invest Cont|6200    4TH                          AV|
+|220213256|2022-07-14|2020-07-14|900     |Rampart    |THEFT OF IDENTITY|79      |M       |B           |null       |Invest Cont|1200 W  7TH                          ST|
+
 
 
 ## :one: Which hour has the highest frequency of crimes?
@@ -89,22 +90,23 @@ Central
 
 ````python
 import pandas as pd
-from matplotlib import pyplot as plt
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_1\halftime_musicians.csv")
-halftime_appearance = halftime_musicians.groupby('musician').sum('num_songs')
-halftime_appearance = halftime_appearance.sort_values('num_songs', ascending= False)
-halftime_appearance.head(10)
+crimes = pd.read_csv("crimes.csv", dtype={"TIME OCC": str})
+bins=[0,17,25,34,44,54,64,crimes['Vict Age'].max()]
+labels=["0-17", "18-25", "26-34", "35-44", "45-54", "55-64", "65+"]
+crimes['victim_ages']=pd.cut(crimes['Vict Age'],labels=labels,bins=bins)
+victim_ages=crimes['victim_ages'].value_counts().sort_index()
+victim_ages
 ````
 **Results**
-|musician                                      |super_bowl|num_songs|
-|----------------------------------------------|----------|---------|
-|Justin Timberlake                             |90        |12       |
-|Beyoncé                                       |97        |10       |
-|Diana Ross                                    |30        |10       |
-|Grambling State University Tiger Marching Band|79        |9        |
-|Bruno Mars                                    |98        |9        |
-|Katy Perry                                    |49        |8        |
-|Spirit of Troy                                |43        |8        |
-|The Florida State University Marching Chiefs  |18        |7        |
+|index    |victim_ages|
+|---------|-----------|
+|0-17     |4528       |
+|18-25    |28291      |
+|26-34    |47470      |
+|35-44    |42157      |
+|45-54    |28353      |
+|55-64    |20169      |
+|65+      |14747      |
+
 |Lady Gaga                                     |51        |7        |
 |Prince                                        |41        |7        |
