@@ -85,7 +85,7 @@ ORDER BY continent
 |Oceania      |10                                         |
 |South America|3                                          |
 
-## :three: Which business categories are best suited to last many years, and on what continent are they? Store your answer with the oldest founding year for each continent and category combination.
+## :three: Which business categories are best suited to last many years, and on what continent are they? Store the answer with the oldest founding year for each continent and category combination.
 
 ````sql
 WITH sub AS (
