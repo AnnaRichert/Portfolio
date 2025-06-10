@@ -14,6 +14,9 @@ The Data:
 |category_code|Code for the business category (varchar)   |
 |country_code |ISO 3166-1 three-letter country code (char)|
 
+````sql
+
+
 - `countries`
 
 |Column       |Description                                |
