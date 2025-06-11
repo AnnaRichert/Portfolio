@@ -36,43 +36,46 @@ top_gender
 |----|
 |Male|
 
-## :two: How many matches finished with a point difference greater than 40?
+## :two: What is the most commonly awarded birth country (using a different approach to receive a string)
 
 ````python
 import pandas as pd
-from matplotlib import pyplot as plt
-super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_1\super_bowls.csv")
-matches=super_bowls[ (super_bowls['difference_pts'] > 40) ]
-count=matches['difference_pts'].count()
-print(count)
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+top_country = nobel['birth_country'].value_counts().index[0]
+top_country
 ````
 **Results**
 
-1
+'United States of America'
 
 
-## :three: Who performed the most songs in Super Bowl halftime shows?
+## :three: Which decade had the highest ratio of US-born Nobel Prize winners to total winners in all categories?
 
 ````python
 import pandas as pd
-from matplotlib import pyplot as plt
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_1\halftime_musicians.csv")
-halftime_appearance = halftime_musicians.groupby('musician').sum('num_songs')
-halftime_appearance = halftime_appearance.sort_values('num_songs', ascending= False)
-halftime_appearance.head(10)
+# Read in the Nobel Prize data
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+# Create a 'decade' column
+nobel['decade'] = (nobel['year'] // 10) * 10
+# Count total winners per decade
+total_per_decade = nobel.groupby('decade').size()
+# Count US-born winners per decade
+us_per_decade = nobel[nobel['birth_country']=='United States of America'].groupby('decade').size()
+# Combine results into a DataFrame
+result = pd.DataFrame({
+    'total_laureates': total_per_decade,
+    'us_born_laureates': us_per_decade})
+# Calculate the ratio and add it as a new column
+result['us_ratio'] = result['us_born_laureates'] / result['total_laureates']
+# Sort by ratio in descending order to see the highest at the top
+result = result.sort_values('us_ratio', ascending=False)
+# Display the decade with the highest ratio
+result.head(1)
 ````
 **Results**
-|musician                                      |super_bowl|num_songs|
-|----------------------------------------------|----------|---------|
-|Justin Timberlake                             |90        |12       |
-|Beyoncé                                       |97        |10       |
-|Diana Ross                                    |30        |10       |
-|Grambling State University Tiger Marching Band|79        |9        |
-|Bruno Mars                                    |98        |9        |
-|Katy Perry                                    |49        |8        |
-|Spirit of Troy                                |43        |8        |
-|The Florida State University Marching Chiefs  |18        |7        |
-|Lady Gaga                                     |51        |7        |
-|Prince                                        |41        |7        |
+|decade|total_laureates|us_born_laureates|us_ratio    |
+|------|---------------|-----------------|------------|
+|2000  |123            |52               |0.4227642276|
+
 
 
