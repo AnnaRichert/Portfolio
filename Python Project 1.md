@@ -1,87 +1,40 @@
 ## Python
 ### :bar_chart: Project 1
 
-Exploring Super Bowl data to uncover insights about TV viewership, game outcomes, and halftime shows. The dataset is made up of three CSV files, one with game data, one with TV data, and one with halftime musician data for 52 Super Bowls through 2018.
+Exploring Nobel Prize data from The Nobel Foundation. It contains all prize winners from the outset of the awards from 1901 to 2023.
 
 The Data:
 
-1. `halftime_musicians`
-
-This dataset contains information about the musicians who performed during the halftime shows of various Super Bowl games. The structure is shown below, and it applies to all remaining files.
-
-|Column      |Description                                                                       |
-|------------|----------------------------------------------------------------------------------|
-|`super_bowl`|The Super Bowl number (e.g., 52 for Super Bowl LII).                              |
-|`musician`  |The name of the musician or musical group that performed during the halftime show.|
-|`num_songs` |The number of songs performed by the musician or group during the halftime show.  |
+- **`nobel`**
 
 ````python
 import pandas as pd
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_1\halftime_musicians.csv")
-halftime_musicians.head()
-````
-|super_bowl  |musician                                                                          |num_songs|
-|------------|----------------------------------------------------------------------------------|---------|
-|52          |Justin Timberlake                                                                 |11       |
-|52          |University of Minnesota Marching Band                                             |1        |
-|51          |Lady Gaga                                                                         |7        |
-|50          |Coldplay                                                                          |6        |
-|50          |Beyoncé                                                                           |3        |
-
-
-2. `super_bowls`
-   
-This dataset provides details about each Super Bowl game, including the date, location, participating teams, and scores, including the points difference between the winning and losing team (`difference_pts`).
-
-````python
-import pandas as pd
-super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_1\super_bowls.csv")
-super_bowls.head()
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+nobel.head()
 ````
 
-|date        |super_bowl                                                                        |venue|city           |state     |attendance|team_winner         |winning_pts|qb_winner_1   |qb_winner_2|coach_winner  |team_loser          |losing_pts|qb_loser_1    |qb_loser_2|coach_loser   |combined_pts|difference_pts|
-|------------|----------------------------------------------------------------------------------|-----|---------------|----------|----------|--------------------|-----------|--------------|-----------|--------------|--------------------|----------|--------------|----------|--------------|------------|--------------|
-|2018-02-04  |52                                                                                |U.S. Bank Stadium|Minneapolis    |Minnesota |67612     |Philadelphia Eagles |41         |Nick Foles    |null       |Doug Pederson |New England Patriots|33        |Tom Brady     |null      |Bill Belichick|74          |8             |
-|2017-02-05  |51                                                                                |NRG Stadium|Houston        |Texas     |70807     |New England Patriots|34         |Tom Brady     |null       |Bill Belichick|Atlanta Falcons     |28        |Matt Ryan     |null      |Dan Quinn     |62          |6             |
-|2016-02-07  |50                                                                                |Levi's Stadium|Santa Clara    |California|71088     |Denver Broncos      |24         |Peyton Manning|null       |Gary Kubiak   |Carolina Panthers   |10        |Cam Newton    |null      |Ron Rivera    |34          |14            |
-|2015-02-01  |49                                                                                |University of Phoenix Stadium|Glendale       |Arizona   |70288     |New England Patriots|28         |Tom Brady     |null       |Bill Belichick|Seattle Seahawks    |24        |Russell Wilson|null      |Pete Carroll  |52          |4             |
-|2014-02-02  |48                                                                                |MetLife Stadium|East Rutherford|New Jersey|82529     |Seattle Seahawks    |43         |Russell Wilson|null       |Pete Carroll  |Denver Broncos      |8         |Peyton Manning|null      |John Fox      |51          |35            |
+|year|category  |prize                                         |motivation                                                                                                                                                                                                                                        |prize_share|laureate_id|laureate_type|full_name                   |birth_date|birth_city       |birth_country   |sex |organization_name |organization_city|organization_country|death_date|death_city|death_country|
+|----|----------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-----------|-------------|----------------------------|----------|-----------------|----------------|----|------------------|-----------------|--------------------|----------|----------|-------------|
+|1901|Chemistry |The Nobel Prize in Chemistry 1901             |"in recognition of the extraordinary services he has rendered by the discovery of the laws of chemical dynamics and osmotic pressure in solutions"                                                                                                |1/1        |160        |Individual   |Jacobus Henricus van 't Hoff|1852-08-30|Rotterdam        |Netherlands     |Male|Berlin University |Berlin           |Germany             |1911-03-01|Berlin    |Germany      |
+|1901|Literature|The Nobel Prize in Literature 1901            |"in special recognition of his poetic composition, which gives evidence of lofty idealism, artistic perfection and a rare combination of the qualities of both heart and intellect"                                                               |1/1        |569        |Individual   |Sully Prudhomme             |1839-03-16|Paris            |France          |Male|null              |null             |null                |1907-09-07|Châtenay  |France       |
+|1901|Medicine  |The Nobel Prize in Physiology or Medicine 1901|"for his work on serum therapy, especially its application against diphtheria, by which he has opened a new road in the domain of medical science and thereby placed in the hands of the physician a victorious weapon against illness and deaths"|1/1        |293        |Individual   |Emil Adolf von Behring      |1854-03-15|Hansdorf (Lawice)|Prussia (Poland)|Male|Marburg University|Marburg          |Germany             |1917-03-31|Marburg   |Germany      |
+|1901|Peace     |The Nobel Peace Prize 1901                    |null                                                                                                                                                                                                                                              |1/2        |462        |Individual   |Jean Henry Dunant           |1828-05-08|Geneva           |Switzerland     |Male|null              |null             |null                |1910-10-30|Heiden    |Switzerland  |
+|1901|Peace     |The Nobel Peace Prize 1901                    |null                                                                                                                                                                                                                                              |1/2        |463        |Individual   |Frédéric Passy              |1822-05-20|Paris            |France          |Male|null              |null             |null                |1912-06-12|Paris     |France       |
 
 
-3. `tv`
-   
-This dataset contains television viewership statistics and advertisement costs related to each Super Bowl.
+## :one: What is the most commonly awarded gender?
 
 ````python
 import pandas as pd
-tv = pd.read_csv("C:\Users\Arich\Documents\Project_1\tv.csv")
-tv.head()
-````
-
-|super_bowl  |network                                                                           |avg_us_viewers|total_us_viewers|rating_household|share_household|rating_18_49        |share_18_49|ad_cost       |
-|------------|----------------------------------------------------------------------------------|--------------|----------------|----------------|---------------|--------------------|-----------|--------------|
-|52          |NBC                                                                               |103390000     |                |43.1            |68             |33.4                |78         |5000000       |
-|51          |Fox                                                                               |111319000     |172000000       |45.3            |73             |37.1                |79         |5000000       |
-|50          |CBS                                                                               |111864000     |167000000       |46.6            |72             |37.7                |79         |5000000       |
-|49          |NBC                                                                               |114442000     |168000000       |47.5            |71             |39.1                |79         |4500000       |
-|48          |Fox                                                                               |112191000     |167000000       |46.7            |69             |39.3                |77         |4000000       |
-
-
-
-## :one: Has TV viewership increased over time?
-
-````python
-import pandas as pd
-from matplotlib import pyplot as plt
-tv = pd.read_csv("C:\Users\Arich\Documents\Project_1\tv.csv")
-plt.plot(tv['super_bowl'], tv['avg_us_viewers'])
-plt.title ('Average Number of US Viewers')
-plt.show()
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+top_gender=nobel['sex'].mode()
+top_gender
 ````
 **Results**
 
-![plot](https://github.com/user-attachments/assets/af4ccb1c-f94b-470d-8848-c6848866c010)
-
+|sex |
+|----|
+|Male|
 
 ## :two: How many matches finished with a point difference greater than 40?
 
