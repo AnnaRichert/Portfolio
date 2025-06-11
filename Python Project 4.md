@@ -1,5 +1,5 @@
 ## Python
-### :bar_chart: Project 1
+### :bar_chart: Project 4
 
 Exploring Super Bowl data to uncover insights about TV viewership, game outcomes, and halftime shows. The dataset is made up of three CSV files, one with game data, one with TV data, and one with halftime musician data for 52 Super Bowls through 2018.
 
