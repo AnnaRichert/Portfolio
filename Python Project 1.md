@@ -10,7 +10,7 @@ The Data:
 ````python
 import pandas as pd
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
-nobel.head()
+print(nobel.head())
 ````
 
 |year|category  |prize                                         |motivation                                                                                                                                                                                                                                        |prize_share|laureate_id|laureate_type|full_name                   |birth_date|birth_city       |birth_country   |sex |organization_name |organization_city|organization_country|death_date|death_city|death_country|
@@ -29,7 +29,7 @@ nobel.head()
 import pandas as pd
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 top_gender=nobel['sex'].mode()
-top_gender
+print(top_gender)
 ````
 **Results**
 
@@ -45,7 +45,7 @@ top_gender
 import pandas as pd
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 top_country = nobel['birth_country'].value_counts().index[0]
-top_country
+print(top_country)
 ````
 **Results**
 
@@ -140,7 +140,7 @@ The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 i
 
 
 
-## :six: Which individuals or organizations have won more than one Nobel Prize throughout the years? Store the full names in a list named repeat_list.
+## :six: Which individuals or organizations have won more than one Nobel Prize throughout the years? Save the result in a list.
 
 ````python
 import pandas as pd
@@ -153,7 +153,7 @@ multiple_winners = counts[counts>1]
 # Store the results in a list
 repeat_list = list(multiple_winners.index)
 # Display results
-repeat_list
+print(repeat_list)
 ````
 
 **Results**
