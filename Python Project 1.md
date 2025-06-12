@@ -77,5 +77,81 @@ result.head(1)
 |------|---------------|-----------------|------------|
 |2000  |123            |52               |0.4227642276|
 
+## :four: Which decade and Nobel Prize category combination had the highest proportion of female laureates? Store as a dictionary where the decade is the key and the category is the value. There should only be one key:value pair.
+
+````python
+import pandas as pd
+# Read in the Nobel Prize data
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+# Create a 'decade' column
+nobel['decade'] = (nobel['year'] // 10) * 10
+# Count total winners per decade
+total = nobel.groupby(['decade','category']).size()
+# Count female winners per decade
+female = nobel[nobel['sex']=='Female'].groupby(['decade','category']).size()
+# Combine results into a DataFrame
+result = pd.DataFrame({
+    'total_per_decade': total,
+    'females': female})
+# Calculate the ratio and add it as a new column
+result['ratio']=result['females'] / result['total_per_decade']
+# Find the index with the max value
+max = result['ratio'].idxmax()
+# Format as Dictionary
+max_female_dict = {max[0]: max[1]}
+# Display dictionary
+print(max_female_dict)
+````
+
+**Results**
+
+{2020: 'Literature'}
+
+## :five: Who was the first woman to receive a Nobel Prize, in which year and category? Save the result in a string
+
+````python
+import pandas as pd
+# Read in the Nobel Prize data
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+# Filter for female laureates
+women = nobel[nobel['sex']=='Female']
+# Find the lowest value in column
+first_woman = women[women['year']==women['year'].min()]
+# Extract name, year and category
+first_woman_name = first_woman['full_name'].iloc[0]
+first_woman_year = first_woman['year'].iloc[0]
+first_woman_category = first_woman['category'].iloc[0]
+# Display results
+print(f"\n The first woman to win a Nobel Prize was {first_woman_name}, in {first_woman_year} in the category of {first_woman_category}.")
+
+````
+
+**Results**
+
+The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 in the category of Physics.
 
 
+## :six: Which individuals or organizations have won more than one Nobel Prize throughout the years? Store the full names in a list named repeat_list.
+
+````python
+import pandas as pd
+# Read in the Nobel Prize data
+nobel = pd.read_csv('data/nobel.csv')
+# Count how many times individuals and organisations appear
+counts = nobel['full_name'].value_counts()
+# Filter those who won more than 1
+multiple_winners = counts[counts>1]
+# Store the results in a list
+repeat_list = list(multiple_winners.index)
+# Display results
+repeat_list
+````
+
+**Results**
+
+['Comité international de la Croix Rouge (International Committee of the Red Cross)', 
+'Linus Carl Pauling', 
+'John Bardeen', 
+'Frederick Sanger', 
+'Marie Curie, née Sklodowska', 
+'Office of the United Nations High Commissioner for Refugees (UNHCR)']
