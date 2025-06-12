@@ -22,6 +22,7 @@ nobel.head()
 |1901|Peace     |The Nobel Peace Prize 1901                    |null                                                                                                                                                                                                                                              |1/2        |463        |Individual   |Frédéric Passy              |1822-05-20|Paris            |France          |Male|null              |null             |null                |1912-06-12|Paris     |France       |
 
 
+
 ## :one: What is the most commonly awarded gender?
 
 ````python
@@ -36,6 +37,8 @@ top_gender
 |----|
 |Male|
 
+
+
 ## :two: What is the most commonly awarded birth country (using a different approach to receive a string)
 
 ````python
@@ -47,6 +50,7 @@ top_country
 **Results**
 
 'United States of America'
+
 
 
 ## :three: Which decade had the highest ratio of US-born Nobel Prize winners to total winners in all categories?
@@ -76,6 +80,8 @@ result.head(1)
 |decade|total_laureates|us_born_laureates|us_ratio    |
 |------|---------------|-----------------|------------|
 |2000  |123            |52               |0.4227642276|
+
+
 
 ## :four: Which decade and Nobel Prize category combination had the highest proportion of female laureates? Store as a dictionary where the decade is the key and the category is the value. There should only be one key:value pair.
 
@@ -107,6 +113,8 @@ print(max_female_dict)
 
 {2020: 'Literature'}
 
+
+
 ## :five: Who was the first woman to receive a Nobel Prize, in which year and category? Save the result in a string
 
 ````python
@@ -129,6 +137,7 @@ print(f"\n The first woman to win a Nobel Prize was {first_woman_name}, in {firs
 **Results**
 
 The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 in the category of Physics.
+
 
 
 ## :six: Which individuals or organizations have won more than one Nobel Prize throughout the years? Store the full names in a list named repeat_list.
