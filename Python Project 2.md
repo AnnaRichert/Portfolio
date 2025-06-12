@@ -108,7 +108,6 @@ schools_sorted['average_SAT'] = schools_sorted['mean']
 schools_sorted['std_SAT'] = schools_sorted['std']
 # Select relevant columns
 largest_std_dev= schools_sorted[['num_schools', 'average_SAT', 'std_SAT']]
-largest_std_dev.reset_index(inplace = True)
 print(largest_std_dev.head(1))
 ````
 **Results**
