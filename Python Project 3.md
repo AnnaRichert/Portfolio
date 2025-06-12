@@ -38,30 +38,39 @@ crimes.head()
 
 
 
-## :one: Which hour has the highest frequency of crimes?
+## :one: Show on a plot which hour has the highest frequency of crimes?
 
 ````python
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+# Load data, reading 'TIME OCC' column is read as string
 crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+# Extract hour
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
+# Plot number of crimes by hour
 sns.countplot(x='hour', data=crimes)
+# Display the plot
 plt.show()
 ````
 **Results**
 
 ![plot2](https://github.com/user-attachments/assets/47f48f53-9ec8-48e0-aaf7-1d01a84c107f)
 
+
 ## :two: Which area has the largest frequency of night crimes (crimes committed between 10pm and 3:59am)?
 
 ````python
 import pandas as pd
+# Load data, reading 'TIME OCC' column is read as string
 crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+# Extract hour from 'TIME OCC'
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
+# Filter for crimes that occurred at night (22:00–03:59)
 night=crimes[(crimes['TIME OCC']>='2200') | (crimes['TIME OCC']<='0359')]
+# Find the area with the highest count of night crimes
 peak_night_crime_location=night.groupby("AREA NAME")["hour"].count().sort_values(ascending=False).index[0]
-peak_night_crime_location
+print(peak_night_crime_location)
 ````
 **Results**
 
@@ -71,12 +80,16 @@ Central
 
 ````python
 import pandas as pd
+# Load data, reading 'TIME OCC' column is read as string
 crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+# Define age bins and labels
 bins=[0,17,25,34,44,54,64,crimes['Vict Age'].max()]
 labels=["0-17", "18-25", "26-34", "35-44", "45-54", "55-64", "65+"]
+# Create victim age groups
 crimes['victim_ages']=pd.cut(crimes['Vict Age'],labels=labels,bins=bins)
+# Count number of victims in each age group
 victim_ages=crimes['victim_ages'].value_counts().sort_index()
-victim_ages
+print(victim_ages)
 ````
 **Results**
 |index    |victim_ages|
