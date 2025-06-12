@@ -152,9 +152,9 @@ print(repeat_list)
 
 **Results**
 
-['Comité international de la Croix Rouge (International Committee of the Red Cross)', 
-'Linus Carl Pauling', 
-'John Bardeen', 
-'Frederick Sanger', 
-'Marie Curie, née Sklodowska', 
+['Comité international de la Croix Rouge (International Committee of the Red Cross)',
+'Linus Carl Pauling',
+'John Bardeen',
+'Frederick Sanger',
+'Marie Curie, née Sklodowska',
 'Office of the United Nations High Commissioner for Refugees (UNHCR)']
