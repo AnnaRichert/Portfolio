@@ -31,7 +31,9 @@ schools.head()
 ````python
 import pandas as pd
 schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+# Filter schools having at least 0.8*800=640 and sorting the results
 best_schools = schools.query('average_math >= 640').sort_values('average_math', ascending= False)
+# Select schools' names and score
 best_math_schools = best_schools[['school_name', 'average_math']]
 print(best_math_schools)
 ````
@@ -57,8 +59,11 @@ print(best_math_schools)
 ````python
 import pandas as pd
 schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+# Create new column which is a sum of total scores
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
+# Sort by the new column
 schools_sorted = schools.sort_values('total_SAT', ascending = False)
+# Select top 10 schools
 top_10_schools=schools_sorted[['school_name', 'total_SAT']].head(10)
 print(top_10_schools)
 ````
@@ -91,12 +96,17 @@ print(top_10_schools)
 ````python
 import pandas as pd
 schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+# Create new column which is a sum of total scores
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
+# Aggregate by borough: count, mean, std of total SAT, rounded to 2 decimals
 schools_agg = schools.groupby ('borough') ['total_SAT'].agg(['count', 'mean', 'std']).round(2)
+# Sort boroughs by standard deviation (descending)
 schools_sorted = schools_agg.sort_values('std', ascending = False)
+# Rename columns for clarity
 schools_sorted['num_schools'] = schools_sorted['count']
 schools_sorted['average_SAT'] = schools_sorted['mean']
 schools_sorted['std_SAT'] = schools_sorted['std']
+# Select relevant columns
 largest_std_dev= schools_sorted[['num_schools', 'average_SAT', 'std_SAT']]
 largest_std_dev.reset_index(inplace = True)
 print(largest_std_dev.head(1))
