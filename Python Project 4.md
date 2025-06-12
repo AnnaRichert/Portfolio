@@ -102,7 +102,7 @@ print(count)
 1
 
 
-## :three: Who performed the most songs in Super Bowl halftime shows? List first 10 artists.
+## :three: Who performed the most songs in Super Bowl halftime shows? List 10 artists.
 
 ````python
 import pandas as pd
