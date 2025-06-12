@@ -136,7 +136,7 @@ The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 i
 ````python
 import pandas as pd
 # Read in the Nobel Prize data
-nobel = pd.read_csv('data/nobel.csv')
+nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 # Count how many times individuals and organisations appear
 counts = nobel['full_name'].value_counts()
 # Filter those who won more than 1
