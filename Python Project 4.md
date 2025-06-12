@@ -68,13 +68,15 @@ tv.head()
 
 
 
-## :one: Has TV viewership increased over time?
+## :one: Using a plot, show if TV viewership has increased over time?
 
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
 tv = pd.read_csv("C:\Users\Arich\Documents\Project_4\tv.csv")
+# Plot average US viewers per Super Bowl
 plt.plot(tv['super_bowl'], tv['avg_us_viewers'])
+# Add title
 plt.title ('Average Number of US Viewers')
 plt.show()
 ````
@@ -83,13 +85,15 @@ plt.show()
 ![plot](https://github.com/user-attachments/assets/af4ccb1c-f94b-470d-8848-c6848866c010)
 
 
-## :two: How many matches finished with a point difference greater than 40?
+## :two: Count how many matches finished with a point difference greater than 40?
 
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
 super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_4\super_bowls.csv")
+# Filter matches where the point difference is greater than 40
 matches=super_bowls[ (super_bowls['difference_pts'] > 40) ]
+# Count number of such matches
 count=matches['difference_pts'].count()
 print(count)
 ````
@@ -98,14 +102,17 @@ print(count)
 1
 
 
-## :three: Who performed the most songs in Super Bowl halftime shows?
+## :three: Who performed the most songs in Super Bowl halftime shows? List first 10 artists.
 
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
 halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_4\halftime_musicians.csv")
+# Sum total songs performed by each musician
 halftime_appearance = halftime_musicians.groupby('musician').sum('num_songs')
+# Sort musicians by total number of songs performed (descending)
 halftime_appearance = halftime_appearance.sort_values('num_songs', ascending= False)
+# Show top 10 musicians
 halftime_appearance.head(10)
 ````
 **Results**
