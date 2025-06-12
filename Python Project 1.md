@@ -28,6 +28,7 @@ print(nobel.head())
 ````python
 import pandas as pd
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+# Find the most common gender
 top_gender=nobel['sex'].mode()
 print(top_gender)
 ````
@@ -39,11 +40,12 @@ print(top_gender)
 
 
 
-## :two: What is the most commonly awarded birth country (using a different approach to receive a string)
+## :two: What is the most commonly awarded birth country (using a different approach)?
 
 ````python
 import pandas as pd
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
+# Find the most common birth country
 top_country = nobel['birth_country'].value_counts().index[0]
 print(top_country)
 ````
@@ -57,7 +59,6 @@ print(top_country)
 
 ````python
 import pandas as pd
-# Read in the Nobel Prize data
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 # Create a 'decade' column
 nobel['decade'] = (nobel['year'] // 10) * 10
@@ -73,7 +74,6 @@ result = pd.DataFrame({
 result['us_ratio'] = result['us_born_laureates'] / result['total_laureates']
 # Sort by ratio in descending order to see the highest at the top
 result = result.sort_values('us_ratio', ascending=False)
-# Display the decade with the highest ratio
 result.head(1)
 ````
 **Results**
@@ -87,7 +87,6 @@ result.head(1)
 
 ````python
 import pandas as pd
-# Read in the Nobel Prize data
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 # Create a 'decade' column
 nobel['decade'] = (nobel['year'] // 10) * 10
@@ -105,7 +104,6 @@ result['ratio']=result['females'] / result['total_per_decade']
 max = result['ratio'].idxmax()
 # Format as Dictionary
 max_female_dict = {max[0]: max[1]}
-# Display dictionary
 print(max_female_dict)
 ````
 
@@ -119,7 +117,6 @@ print(max_female_dict)
 
 ````python
 import pandas as pd
-# Read in the Nobel Prize data
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 # Filter for female laureates
 women = nobel[nobel['sex']=='Female']
@@ -129,7 +126,6 @@ first_woman = women[women['year']==women['year'].min()]
 first_woman_name = first_woman['full_name'].iloc[0]
 first_woman_year = first_woman['year'].iloc[0]
 first_woman_category = first_woman['category'].iloc[0]
-# Display results
 print(f"\n The first woman to win a Nobel Prize was {first_woman_name}, in {first_woman_year} in the category of {first_woman_category}.")
 
 ````
@@ -144,7 +140,6 @@ The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 i
 
 ````python
 import pandas as pd
-# Read in the Nobel Prize data
 nobel = pd.read_csv("C:\Users\Arich\Documents\Project_1\nobel.csv")
 # Count how many times individuals and organisations appear
 counts = nobel['full_name'].value_counts()
@@ -152,7 +147,6 @@ counts = nobel['full_name'].value_counts()
 multiple_winners = counts[counts>1]
 # Store the results in a list
 repeat_list = list(multiple_winners.index)
-# Display results
 print(repeat_list)
 ````
 
