@@ -17,7 +17,7 @@ This dataset contains information about the musicians who performed during the h
 
 ````python
 import pandas as pd
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_4\halftime_musicians.csv")
+halftime_musicians = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\halftime_musicians.csv')
 halftime_musicians.head()
 ````
 |super_bowl  |musician                                                                          |num_songs|
@@ -35,7 +35,7 @@ This dataset provides details about each Super Bowl game, including the date, lo
 
 ````python
 import pandas as pd
-super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_4\super_bowls.csv")
+super_bowls = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\halftime_musicians.csv')
 super_bowls.head()
 ````
 
@@ -54,7 +54,7 @@ This dataset contains television viewership statistics and advertisement costs r
 
 ````python
 import pandas as pd
-tv = pd.read_csv("C:\Users\Arich\Documents\Project_4\tv.csv")
+tv = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\tv.csv')
 tv.head()
 ````
 
@@ -73,7 +73,7 @@ tv.head()
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
-tv = pd.read_csv("C:\Users\Arich\Documents\Project_4\tv.csv")
+tv = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\tv.csv')
 # Plot average US viewers per Super Bowl
 plt.plot(tv['super_bowl'], tv['avg_us_viewers'])
 # Add title
@@ -90,7 +90,7 @@ plt.show()
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
-super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_4\super_bowls.csv")
+super_bowls = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\super_bowls.csv')
 # Filter matches where the point difference is greater than 40
 matches=super_bowls[ (super_bowls['difference_pts'] > 40) ]
 # Count number of such matches
@@ -107,7 +107,7 @@ print(count)
 ````python
 import pandas as pd
 from matplotlib import pyplot as plt
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_4\halftime_musicians.csv")
+halftime_musicians = pd.read_csv('C:\Users\Arich\Documents\Python\Project_4\halftime_musicians.csv')
 # Sum total songs performed by each musician
 halftime_appearance = halftime_musicians.groupby('musician').sum('num_songs')
 # Sort musicians by total number of songs performed (descending)
