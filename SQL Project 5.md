@@ -11,7 +11,7 @@ $lcl = avgheight - 3 * \frac{stddevheight}{\sqrt{5}}$
 
 The UCL defines the highest acceptable height for the parts, while the LCL defines the lowest acceptable height for the parts. Ideally, parts should fall between the two limits.
 
-- **`manufacturing_parts`** dataset has the following fields:
+- **`manufacturing_parts.csv`** dataset has the following fields:
 
 `item_no`: the item number
 
