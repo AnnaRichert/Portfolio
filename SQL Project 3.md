@@ -3,7 +3,7 @@
 
 Exploring GoodThought NGO database with detailed records of assignments, funding, impacts, and donor activities from 2010 to 2023. The dataset includes:
 
-- **`Assignments`**:
+- **`Assignments.csv`**:
 Details about each project, including its name, duration (start and end dates), budget, geographical region, and the impact score.
 
 ````sql
@@ -21,7 +21,7 @@ LIMIT 5
 |5                             |Assignment_5   |2020-11-22T00:00:00.000|2021-07-10T00:00:00.000                                           |13548.22 |North |5.29        |
 
 
-- **`Donations`**:
+- **`Donations.csv`**:
 Records of financial contributions, linked to specific donors and assignments, highlighting how financial support is allocated and utilized.
 
 ````sql
@@ -40,7 +40,7 @@ LIMIT 5
 
 
 
-- **`Donors`**: Information on individuals and organizations that fund GoodThought’s projects, including donor types.
+- **`Donors.csv`**: Information on individuals and organizations that fund GoodThought’s projects, including donor types.
 
 ````sql
 SELECT *
