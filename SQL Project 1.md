@@ -5,7 +5,7 @@ Exploring datasets from BusinessFinancing.co.uk regarding the oldest companies i
 
 The Data:
 
-- **`businesses`** and **`new_businesses`**
+- **`businesses.csv`** and **`new_businesses.csv`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
@@ -40,7 +40,7 @@ FROM new_businesses
 
 
 
-- **`countries`**
+- **`countries.csv`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
@@ -63,7 +63,7 @@ LIMIT 5
 |ARE                           |United Arab Emirates|Asia     |
 
 
-- **`categories`**
+- **`categories.csv`**
 
 |Column       |Description                                |
 |-------------|-------------------------------------------|
