@@ -5,7 +5,7 @@ Exploring dataset called `schools.csv` and answering questions about New York Ci
 
 The Data:
 
-- `schools.csv`
+- **`schools.csv`**
 
 
 ````python
