@@ -5,7 +5,7 @@ Exploring database `unicorns` to analyze trends in high-growth companies (unicor
 
 The Data:
 
-- **`dates`**
+- **`dates.csv`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -28,7 +28,7 @@ LIMIT 5
 |396                           |2021-10-21T00:00:00.000|2021        |
 
 
-- **`funding`**
+- **`funding.csv`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -52,7 +52,7 @@ LIMIT 5
 |396                           |2000000000|100000000  |Insight Partners, Softbank Group, Connect Ventures    |
 
 
-- **`industries`**
+- **`industries.csv`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
@@ -75,7 +75,7 @@ LIMIT 5
 
 
 
-- **`companies`**
+- **`companies.csv`**
 
 |Column    |Description                         |
 |----------|------------------------------------|
