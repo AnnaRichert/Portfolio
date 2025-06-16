@@ -5,7 +5,7 @@ Exploring Nobel Prize data from The Nobel Foundation. It contains all prize winn
 
 The Data:
 
-- **`nobel.com`**
+- **`nobel.csv`**
 
 ````python
 import pandas as pd
