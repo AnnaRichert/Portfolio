@@ -1,5 +1,5 @@
 ## Python
-### :bar_chart: Project 1
+### :bar_chart: Project 2
 
 Exploring dataset called `schools.csv` and answering questions about New York City (NYC) public school SAT performance.
 
