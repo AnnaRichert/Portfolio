@@ -5,7 +5,7 @@ Exploring datasets from a hypothetical Super Store.
 
 The Data:
 
-- **`orders`**
+- **`orders.csv`**
 
 |Column    |Definition                          |Data type       |Comments                                     |
 |----------|------------------------------------|----------------|---------------------------------------------|
@@ -37,7 +37,7 @@ LIMIT 5
 
 
 
-- **`returned_orders`**
+- **`returned_orders.csv`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
@@ -60,7 +60,7 @@ LIMIT 5
 |Yes                           |ES-2011-1276768|EU                     |
 
 
-- **`people`**
+- **`people.csv`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
@@ -82,7 +82,7 @@ LIMIT 5
 |Africa                        |Deborah Brumfield|
 
 
-- **`products`**
+- **`products.csv`**
 
 |Column    |Definition                          |Data type       |
 |----------|------------------------------------|----------------|
