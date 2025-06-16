@@ -69,11 +69,11 @@ workout_geo.head()
 
 |country            |workout_2018_2023                                                                  |
 |-------------------|-----------------------------------------------------------------------------------|
-|Guam               |                                                                                   |
-|Falkland Islands (Islas Malvinas)|                                                                                   |
-|Cook Islands       |                                                                                   |
-|Brunei             |                                                                                   |
-|Palau              |                                                                                   |
+|United States      |100                                                                                |
+|Canada             |86                                                                                 |
+|Australia          |77                                                                                 |
+|New Zealand        |73                                                                                 |
+|Lebanon            |73                                                                                 |
 
 4. **`three_keywords_geo`**
    
@@ -105,7 +105,7 @@ three_keywords_geo.head()
 ````python
 import pandas as pd
 import matplotlib.pyplot as plt
-workout = pd.read_csv("data/workout.csv")
+workout = pd.read_csv("C:\Users\Arich\Documents\Project_5\workout.csv")
 # Plot monthly popularoty index
 plt.plot(workout['month'], workout['workout_worldwide'])
 # Rotate x-axis labels and set font size
@@ -120,46 +120,52 @@ plt.show()
 
 
 
-## :two: Count how many matches finished with a point difference greater than 40?
+## :two: Using a plot, of the keywords available, what was the most popular during the covid pandemic, and what is the most popular now?
 
 ````python
 import pandas as pd
-from matplotlib import pyplot as plt
-super_bowls = pd.read_csv("C:\Users\Arich\Documents\Project_4\super_bowls.csv")
-# Filter matches where the point difference is greater than 40
-matches=super_bowls[ (super_bowls['difference_pts'] > 40) ]
-# Count number of such matches
-count=matches['difference_pts'].count()
-print(count)
+import matplotlib.pyplot as plt
+three_keywords = pd.read_csv("C:\Users\Arich\Documents\Project_5\three_keywords.csv")
+# Plot line graphs for three keyword trends
+three_keywords.plot(x='month', y=['home_workout_worldwide', 'gym_workout_worldwide', 'home_gym_worldwide'])
+plt.show()
 ````
 **Results**
 
-1
 
+peak_covid = "home workout"
+now = "gym workout"
 
-## :three: Who performed the most songs in Super Bowl halftime shows? List 10 artists.
+## :three: Using a plot, what country has the highest interest for workouts among the following: United States, Australia, or Japan? 
 
 ````python
 import pandas as pd
-from matplotlib import pyplot as plt
-halftime_musicians = pd.read_csv("C:\Users\Arich\Documents\Project_4\halftime_musicians.csv")
-# Sum total songs performed by each musician
-halftime_appearance = halftime_musicians.groupby('musician').sum('num_songs')
-# Sort musicians by total number of songs performed (descending)
-halftime_appearance = halftime_appearance.sort_values('num_songs', ascending= False)
-# Show top 10 musicians
-halftime_appearance.head(10)
+import matplotlib.pyplot as plt
+# Load data and index country names
+workout_geo = pd.read_csv("data/workout_geo.csv", index_col = 0)
+# Select data for United States, Australia, and Japan
+filtered = workout_geo.loc[["United States","Australia","Japan"]]
+# Create a scatter plot for the selected countries
+plt.scatter(x = ["United States","Australia","Japan"], y = 'workout_2018_2023',data = filtered)
+plt.show()
 ````
 **Results**
-|musician                                      |super_bowl|num_songs|
-|----------------------------------------------|----------|---------|
-|Justin Timberlake                             |90        |12       |
-|Beyoncé                                       |97        |10       |
-|Diana Ross                                    |30        |10       |
-|Grambling State University Tiger Marching Band|79        |9        |
-|Bruno Mars                                    |98        |9        |
-|Katy Perry                                    |49        |8        |
-|Spirit of Troy                                |43        |8        |
-|The Florida State University Marching Chiefs  |18        |7        |
-|Lady Gaga                                     |51        |7        |
-|Prince                                        |41        |7        |
+
+top_country = "United States"
+
+## :four: Using a plot, what country has the highest interest for workouts among the following: United States, Australia, or Japan? 
+
+````python
+import pandas as pd
+import matplotlib.pyplot as plt
+# Load data and index country names
+workout_geo = pd.read_csv("data/workout_geo.csv", index_col = 0)
+# Select data for United States, Australia, and Japan
+filtered = workout_geo.loc[["United States","Australia","Japan"]]
+# Create a scatter plot for the selected countries
+plt.scatter(x = ["United States","Australia","Japan"], y = 'workout_2018_2023',data = filtered)
+plt.show()
+````
+**Results**
+
+top_country = "United States"
