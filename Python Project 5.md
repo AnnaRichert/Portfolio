@@ -75,30 +75,6 @@ workout_geo.head()
 |New Zealand        |73                                                                                 |
 |Lebanon            |73                                                                                 |
 
-4. **`three_keywords_geo`**
-   
-| Column     | Description              |
-|------------|--------------------------|
-| `'country'` | Country where the data was measured. |
-| `'home_workout_2018_2023'` | Index representing the popularity of the keyword 'home workout' during the 5 year period. |
-| `'gym_workout_2018_2023'` | Index representing the popularity of the keyword 'gym workout' during the 5 year period.  |
-| `'home_gym_2018_2023'` | Index representing the popularity of the keyword 'home gym' during the 5 year period. |
-
-````python
-import pandas as pd
-three_keywords_geo = pd.read_csv("C:\Users\Arich\Documents\Project_5\three_keywords_geo.csv")
-three_keywords_geo.head()
-````
-
-|Country            |home_workout_2018_2023                                                             |gym_workout_2018_2023|home_gym_2018_2023|
-|-------------------|-----------------------------------------------------------------------------------|---------------------|------------------|
-|France             |31                                                                                 |25                   |44                |
-|Italy              |37                                                                                 |21                   |42                |
-|United States      |36                                                                                 |27                   |37                |
-|Australia          |30                                                                                 |34                   |36                |
-|Argentina          |32                                                                                 |32                   |36                |
-
-
 
 ## :one: Using a plot, show when was the global search for 'workout' at its peak?
 
@@ -144,26 +120,9 @@ import matplotlib.pyplot as plt
 # Load data and index country names
 workout_geo = pd.read_csv("data/workout_geo.csv", index_col = 0)
 # Select data for United States, Australia, and Japan
-filtered = workout_geo.loc[["United States","Australia","Japan"]]
+filtered = workout_geo.loc[['United States','Australia','Japan]]
 # Create a scatter plot for the selected countries
-plt.scatter(x = ["United States","Australia","Japan"], y = 'workout_2018_2023',data = filtered)
-plt.show()
-````
-**Results**
-
-top_country = "United States"
-
-## :four: Using a plot, what country has the highest interest for workouts among the following: United States, Australia, or Japan? 
-
-````python
-import pandas as pd
-import matplotlib.pyplot as plt
-# Load data and index country names
-workout_geo = pd.read_csv("data/workout_geo.csv", index_col = 0)
-# Select data for United States, Australia, and Japan
-filtered = workout_geo.loc[["United States","Australia","Japan"]]
-# Create a scatter plot for the selected countries
-plt.scatter(x = ["United States","Australia","Japan"], y = 'workout_2018_2023',data = filtered)
+plt.scatter(x = ['United States','Australia','Japan'], y = 'workout_2018_2023',data = filtered)
 plt.show()
 ````
 **Results**
