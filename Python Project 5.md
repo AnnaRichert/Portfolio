@@ -94,6 +94,7 @@ plt.show()
 ````
 **Results**
 
+![plot_5_1](https://github.com/user-attachments/assets/38a9b4da-4959-4ea4-abd3-7d6a02f4fb3b)
 
 
 ## :two: Using a plot, of the keywords available, what was the most popular during the covid pandemic, and what is the most popular now?
@@ -107,6 +108,8 @@ three_keywords.plot(x='month', y=['home_workout_worldwide', 'gym_workout_worldwi
 plt.show()
 ````
 **Results**
+
+![plot_5_2](https://github.com/user-attachments/assets/bca8f3bf-d1aa-4916-9214-58f45eb76e57)
 
 
 peak_covid = "home workout"
@@ -126,5 +129,7 @@ plt.scatter(x = ['United States','Australia','Japan'], y = 'workout_2018_2023',d
 plt.show()
 ````
 **Results**
+
+![plot_5_3](https://github.com/user-attachments/assets/e7131664-ed40-4227-a257-3e76b46144d3)
 
 top_country = "United States"
