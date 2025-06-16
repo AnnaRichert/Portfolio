@@ -5,7 +5,7 @@ Exploring Super Bowl data to uncover insights about TV viewership, game outcomes
 
 The Data:
 
-1. `halftime_musicians`
+1. **`halftime_musicians.csv`**
 
 This dataset contains information about the musicians who performed during the halftime shows of various Super Bowl games. The structure is shown below, and it applies to all remaining files.
 
@@ -29,7 +29,7 @@ halftime_musicians.head()
 |50          |Beyoncé                                                                           |3        |
 
 
-2. `super_bowls`
+2. **`super_bowls.csv`**
    
 This dataset provides details about each Super Bowl game, including the date, location, participating teams, and scores, including the points difference between the winning and losing team (`difference_pts`).
 
@@ -48,7 +48,7 @@ super_bowls.head()
 |2014-02-02  |48                                                                                |MetLife Stadium|East Rutherford|New Jersey|82529     |Seattle Seahawks    |43         |Russell Wilson|null       |Pete Carroll  |Denver Broncos      |8         |Peyton Manning|null      |John Fox      |51          |35            |
 
 
-3. `tv`
+3. **`tv.csv`**
    
 This dataset contains television viewership statistics and advertisement costs related to each Super Bowl.
 
