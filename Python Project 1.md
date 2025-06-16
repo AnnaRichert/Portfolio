@@ -9,7 +9,7 @@ The Data:
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 print(nobel.head())
 ````
 
@@ -27,7 +27,7 @@ print(nobel.head())
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Find the most common gender
 top_gender=nobel['sex'].mode()
 print(top_gender)
@@ -44,7 +44,7 @@ print(top_gender)
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Find the most common birth country
 top_country = nobel['birth_country'].value_counts().index[0]
 print(top_country)
@@ -59,7 +59,7 @@ print(top_country)
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Create a 'decade' column
 nobel['decade'] = (nobel['year'] // 10) * 10
 # Count total winners per decade
@@ -87,7 +87,7 @@ result.head(1)
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Create a 'decade' column
 nobel['decade'] = (nobel['year'] // 10) * 10
 # Count total winners per decade
@@ -117,7 +117,7 @@ print(max_female_dict)
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Filter for female laureates
 women = nobel[nobel['sex']=='Female']
 # Find the lowest value in column
@@ -140,7 +140,7 @@ The first woman to win a Nobel Prize was Marie Curie, née Sklodowska, in 1903 i
 
 ````python
 import pandas as pd
-nobel = pd.read_csv('C:\Users\Arich\Documents\SQL\Project_1\nobel.csv')
+nobel = pd.read_csv('C:\Users\Arich\Documents\Python\Project_1\nobel.csv')
 # Count how many times individuals and organisations appear
 counts = nobel['full_name'].value_counts()
 # Filter those who won more than 1
