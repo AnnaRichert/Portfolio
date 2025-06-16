@@ -10,7 +10,7 @@ The Data:
 
 ````python
 import pandas as pd
-schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+schools = pd.read_csv('C:\Users\Arich\Documents\Python\Project_2\schools.csv')
 schools.head()
 ````
 
@@ -30,7 +30,7 @@ schools.head()
 
 ````python
 import pandas as pd
-schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+schools = pd.read_csv('C:\Users\Arich\Documents\Python\Project_2\schools.csv')
 # Filter schools having at least 0.8*800=640 and sorting the results
 best_schools = schools.query('average_math >= 640').sort_values('average_math', ascending= False)
 # Select schools' names and score
@@ -58,7 +58,7 @@ print(best_math_schools)
 
 ````python
 import pandas as pd
-schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+schools = pd.read_csv('C:\Users\Arich\Documents\Python\Project_2\schools.csv')
 # Create new column which is a sum of total scores
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
 # Sort by the new column
@@ -95,7 +95,7 @@ print(top_10_schools)
 
 ````python
 import pandas as pd
-schools = pd.read_csv("C:\Users\Arich\Documents\Project_2\schools.csv")
+schools = pd.read_csv('C:\Users\Arich\Documents\Python\Project_2\schools.csv')
 # Create new column which is a sum of total scores
 schools['total_SAT'] = schools['average_math'] + schools['average_reading'] + schools['average_writing']
 # Aggregate by borough: count, mean, std of total SAT, rounded to 2 decimals
