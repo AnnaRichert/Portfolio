@@ -1,5 +1,5 @@
 ## Python
-### :bar_chart: Project 1
+### :bar_chart: Project 3
 
 Analyzing Los Angeles Police Department (LAPD) datasets of crime data to identify patterns in criminal behavior.
 
@@ -25,7 +25,7 @@ The Data:
 
 ````python
 import pandas as pd
-crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv")
+crimes = pd.read_csv('C:\Users\Arich\Documents\Python\Project_3\crimes.csv')
 crimes.head()
 ````
 |DR_NO    |Date Rptd |DATE OCC  |TIME OCC|AREA NAME  |Crm Cd Desc      |Vict Age|Vict Sex|Vict Descent|Weapon Desc|Status Desc|LOCATION                               |
@@ -45,7 +45,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 # Load data, reading 'TIME OCC' column is read as string
-crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv('C:\Users\Arich\Documents\Python\Project_3\crimes.csv', dtype={"TIME OCC": str})
 # Extract hour
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
 # Plot number of crimes by hour
@@ -63,7 +63,7 @@ plt.show()
 ````python
 import pandas as pd
 # Load data, reading 'TIME OCC' column is read as string
-crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv('C:\Users\Arich\Documents\Python\Project_3\crimes.csv', dtype={"TIME OCC": str})
 # Extract hour from 'TIME OCC'
 crimes['hour']=crimes['TIME OCC'].str[:2].astype(int)
 # Filter for crimes that occurred at night (22:00–03:59)
@@ -81,7 +81,7 @@ Central
 ````python
 import pandas as pd
 # Load data, reading 'TIME OCC' column is read as string
-crimes = pd.read_csv("C:\Users\Arich\Documents\Project_3\crimes.csv", dtype={"TIME OCC": str})
+crimes = pd.read_csv('C:\Users\Arich\Documents\Python\Project_3\crimes.csv', dtype={"TIME OCC": str})
 # Define age bins and labels
 bins=[0,17,25,34,44,54,64,crimes['Vict Age'].max()]
 labels=["0-17", "18-25", "26-34", "35-44", "45-54", "55-64", "65+"]
