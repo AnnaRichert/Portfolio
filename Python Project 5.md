@@ -5,7 +5,7 @@ Exploring interest in workouts at a global and national level. Datasets contain 
 
 The Data:
 
-1. **`workout`**
+1. **`workout.csv`**
 
 |Column             |Description                                                                        |
 |-------------------|-----------------------------------------------------------------------------------|
@@ -28,7 +28,7 @@ workout.head()
 |2018-07            |51                                                                                 |
 
 
-2. **`three_keywords`**
+2. **`three_keywords.csv`**
    
 | Column     | Description              |
 |------------|--------------------------|
@@ -53,7 +53,7 @@ three_keywords.head()
 |2018-07            |12                                                                                 |17                   |9                 |
 
 
-3. **`workout_geo`**
+3. **`workout_geo.csv`**
    
 | Column     | Description              |
 |------------|--------------------------|
