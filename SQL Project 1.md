@@ -87,16 +87,19 @@ LIMIT 5
 ## :one: What is the oldest business on each continent?
 
 ````sql
+-- Step 1: Find, for each continent, the earliest (oldest) founding year of any business
 WITH sub AS (
 	SELECT c.continent, MIN(year_founded) AS min_year
 	FROM businesses AS b
 	LEFT JOIN countries AS c
 	ON b.country_code=c.country_code
 	GROUP BY c.continent),
+-- Step 2: Retrieve all businesses founded in the earliest (oldest) year for any continent
     sub1 AS (SELECT b.country_code, b.business, b.year_founded
             FROM businesses AS b
             RIGHT JOIN sub
             ON b.year_founded=sub.min_year)
+-- Step 3: Report results – for each continent, show the continent name, country, oldest business and its founding year
 SELECT c.continent, c.country, sub1.business, sub1.year_founded
 FROM sub1
 LEFT JOIN countries AS c
@@ -116,6 +119,7 @@ ON sub1.country_code=c.country_code
 ## :two: How many countries per continent lack data on the oldest businesses? Count the number of countries per continent missing business data, including `new_businesses`
 
 ````sql
+-- Step 1: Identify countries with NO business data in either 'businesses' or 'new_businesses' tables
 WITH sub AS (
 	SELECT country_code
 	FROM countries
@@ -123,6 +127,7 @@ WITH sub AS (
 				FROM businesses)
             AND country_code NOT IN (SELECT country_code
 				FROM new_businesses))
+-- Step 2: Count, for each continent, the number of such countries missing any business data
 SELECT continent, COUNT(sub.country_code) AS countries_without_businesses
 FROM sub
 LEFT JOIN countries AS c
@@ -143,13 +148,14 @@ ORDER BY continent
 ## :three: Which business categories are best suited to last many years, and on what continent are they? Store the answer with the oldest founding year for each continent and category combination.
 
 ````sql
+-- Step 1: For each combination of business category and continent, find the earliest (oldest) founding year of businesses present
 WITH sub AS (
 	SELECT MIN(year_founded) AS year_founded, category_code, continent
 	FROM businesses AS b
 	LEFT JOIN countries AS c
 	ON b.country_code=c.country_code
-	GROUP BY category_code, continent
-	ORDER BY MIN(year_founded))
+	GROUP BY category_code, continent)
+-- Step 2: For reporting, join the found results to the categories table to display category names
 SELECT sub.continent, c.category, sub.year_founded
 FROM sub
 LEFT JOIN categories AS c
