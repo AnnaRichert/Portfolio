@@ -42,22 +42,30 @@ LIMIT 5
 ## Create an alert that flags whether the height of a product is within the control limits for each `operator` using the formulas provided above. The final query should return the following fields: `operator`, `row_number`, `height`, `avg_height`, `stddev_height`, `ucl`, `lcl`, `alert`, and be ordered by the `item_no`. The alert column should be a boolean flag. Calculate the control limits, considering rows up to and including the current row; incomplete windows should be excluded from the final query output.
 
 ````sql
+-- Step 1: For each operator, calculate a windowed average and standard deviation of height over the current row and previous four, for every manufacturing part (by item_no)
+--         Assign a row number per operator to track the window's completeness
+
 SELECT sub1.*,
-CASE WHEN height BETWEEN lcl AND ucl THEN FALSE
+ -- Step 3: Create the alert flag (TRUE if height is OUTSIDE control limits, FALSE if WITHIN)
+    CASE WHEN height BETWEEN lcl AND ucl THEN FALSE
 ELSE TRUE
 END AS alert
 FROM (
 	SELECT sub.*, 
-	avg_height+3*stddev_height/sqrt(5) AS ucl,
+	-- Step 2: Calculate Upper Control Limit (ucl) and Lower Control Limit (lcl)
+        avg_height+3*stddev_height/sqrt(5) AS ucl,
 	avg_height-3*stddev_height/sqrt(5) AS lcl
 	FROM (
 		SELECT operator,
 			ROW_NUMBER() OVER(PARTITION BY operator ORDER BY item_no ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS row_number,
-			height, 
-			AVG(height) OVER(PARTITION BY operator ORDER BY item_no ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS avg_height, 
+			height,
+			-- Rolling average for window (5 rows: current + 4 preceding)
+			AVG(height) OVER(PARTITION BY operator ORDER BY item_no ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS avg_height,
+			-- Rolling standard deviation for window
 			STDDEV(height) OVER(PARTITION BY operator ORDER BY item_no ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS stddev_height
 		FROM manufacturing_parts ) AS sub
-	) AS sub1	
+	) AS sub1
+-- Only include rows where the rolling window is complete (i.e., at least 5 measurements)
 WHERE row_number > 4
 ````
 **Results**
