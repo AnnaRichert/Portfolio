@@ -107,6 +107,7 @@ LIMIT 5
 ### :three: Third, with the above information we then finish the query to return a table containing `industry`, `year`, `num_unicorns`, and `average_valuation_billions`. For readability, we sort the results by year and number of unicorns, both in descending order.
 
 ````sql
+-- Step 1: Identify the three best-performing industries by new unicorn count in 2019–2021
 WITH sub AS (
           SELECT industry, COUNT(company_id) 
           FROM dates AS d
@@ -116,6 +117,7 @@ WITH sub AS (
           GROUP by industry
           ORDER BY COUNT(company_id)  DESC
           LIMIT 3),
+-- Step 2: Gather unicorns from the top industries, with year of becoming unicorn and valuation
 sub1 AS (
           SELECT d.company_id, DATE_PART('year', date_joined) AS year, valuation, industry
           FROM dates AS d
@@ -126,6 +128,7 @@ sub1 AS (
           WHERE industry IN (SELECT sub.industry
                             FROM sub)
           AND DATE_PART('year', date_joined) between 2019 AND 2021)
+-- Step 3: For each top industry and year, count unicorns and calculate average valuation in billions USD
 SELECT sub1.industry, sub1.year, COUNT(sub1.company_id) AS num_unicorns, ROUND(AVG(sub1.valuation)/1000000000,2) AS average_valuation_billions
 FROM sub1
 GROUP BY sub1.industry, sub1.year
