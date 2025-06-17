@@ -65,7 +65,7 @@ FROM (
 			STDDEV(height) OVER(PARTITION BY operator ORDER BY item_no ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS stddev_height
 		FROM manufacturing_parts ) AS sub
 	) AS sub1
--- Only include rows where the rolling window is complete (i.e., at least 5 measurements)
+-- Only include rows where the rolling window is complete (at least 5 measurements)
 WHERE row_number > 4
 ````
 **Results**
