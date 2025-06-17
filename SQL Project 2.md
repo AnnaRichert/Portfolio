@@ -110,19 +110,21 @@ LIMIT 5
 ## :one: Find the top 5 products from each category based on highest total sales. The output should be sorted by `category` in ascending order and by `sales` in descending order within each category, i.e. within each category product with highest margin should sit on the top.
 
 ````sql
+-- Step 1: For each product, calculate total sales and profits, and rank products within each category by sales
 WITH sub AS (
             SELECT p.category, p.product_name, 
                     ROUND (SUM(o.sales::NUMERIC),2) AS product_total_sales, 
                     ROUND (SUM(o.profit::NUMERIC),2) AS product_total_profit,
-                    RANK() OVER(PARTITION BY p.category ORDER BY SUM(o.sales::NUMERIC) DESC) AS product_rank
+                    RANK() OVER(PARTITION BY p.category ORDER BY SUM(o.sales::NUMERIC) DESC) AS product_rank  -- Rank of the product within its category, sorted by total sales (highest first)
             FROM orders AS o
             INNER JOIN products AS p
             ON o.product_id=p.product_id
-            GROUP BY  p.category, p.product_name
-            ORDER BY p.category, SUM(o.sales::NUMERIC) DESC)
+            GROUP BY  p.category, p.product_name)
+-- Step 2: Select only the top 5 products per category, sorted by category (asc) and sales (desc)
 SELECT *
 FROM sub
 WHERE product_rank <= 5
+ORDER BY category, product_total_sales DESC
 ````
 
 **Results**
@@ -149,10 +151,12 @@ WHERE product_rank <= 5
 ## :two: Calculate the quantity for orders with missing values in the `quantity` column by determining the unit price for each `product_id` using available order data, considering relevant pricing factors such as discount, market, or region. Then, use this unit price to estimate the missing quantity values. The calculated values should be stored in the `calculated_quantity` column.
 
 ````sql
+-- Step 1: Identify orders where 'quantity' is missing 
 WITH missing AS (
               SELECT product_id, discount, market, region, sales, quantity
               FROM orders 
               WHERE quantity IS NULL), 
+-- Step 2: Calculate the average unit price for each product_id, considering only orders where quantity is known and matching on discount
 unit_prices AS (
               SELECT o.product_id, CAST(o.sales / o.quantity AS NUMERIC) AS unit_price
               FROM orders AS o
@@ -160,6 +164,7 @@ unit_prices AS (
               ON o.product_id = m.product_id
               AND o.discount = m.discount
               WHERE o.quantity IS NOT NULL)
+-- Step 3: For each order missing quantity, estimate the quantity using calculated unit price
 SELECT DISTINCT m.*, ROUND(CAST(m.sales AS NUMERIC) / up.unit_price,0) AS calculated_quantity
 FROM missing AS m
 INNER JOIN unit_prices AS up
