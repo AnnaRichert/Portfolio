@@ -60,9 +60,11 @@ LIMIT 5
 
 The below ERD diagram shows a visual representation of the relationships between these data tables:
 ![diagram](https://github.com/user-attachments/assets/79bf6223-aefd-4599-920f-5e5890ec1258)
+
 ## :one: List the top five assignments based on total value of donations, categorized by donor type. The output should include four columns: 1) `assignment_name`, 2) `region`, 3) `rounded_total_donation_amount` rounded to two decimal places, and 4) `donor_type`, sorted by `rounded_total_donation_amount` in descending order. 
 
 ````sql
+-- Step 1: For each assignment and donor type, calculate the total donation amount. Select only the top five combinations by the amount.
 WITH sub AS (
           SELECT a.assignment_name, ROUND(SUM(d.amount),2) AS rounded_total_donation_amount, dd.donor_type
           FROM assignments AS a
@@ -73,6 +75,7 @@ WITH sub AS (
           GROUP BY a.assignment_name, dd.donor_type
           ORDER BY rounded_total_donation_amount DESC
           LIMIT 5)
+-- Step 2: Add the assignment's region field for each record in the result
 SELECT a.assignment_name, a.region, sub.rounded_total_donation_amount, sub.donor_type
 FROM sub
 LEFT JOIN assignments AS a
@@ -93,6 +96,7 @@ ORDER BY rounded_total_donation_amount DESC
 ## :two: Identify the assignment with the highest impact score in each region, ensuring that each listed assignment has received at least one donation. The output should include four columns: 1) `assignment_name`, 2) `region`, 3) `impact_score`, and 4) `num_total_donations`, sorted by `region` in ascending order. Include only the highest-scoring assignment per region, avoiding duplicates within the same region.
 
 ````sql
+-- Step 1: For each assignment, count the total number of donations it has received. Only include assignments with at least one donation.
 WITH total_donations AS (
                       SELECT assignment_name, COUNT(amount) AS num_total_donations
                       FROM assignments AS a
@@ -101,11 +105,13 @@ WITH total_donations AS (
                       GROUP BY assignment_name 
                       HAVING COUNT(amount) IS NOT NULL
                       ORDER BY COUNT(amount) DESC),
+-- Step 2: For each assignment get region, impact score and compute a ranking within each region by descending impact score.
 rank AS (
     SELECT t.assignment_name, a.region, a.impact_score, ROW_NUMBER() OVER(PARTITION BY a.region ORDER BY a.impact_score DESC) AS ranking, t.num_total_donations
     FROM total_donations AS t
     LEFT JOIN assignments AS a
     ON t.assignment_name=a.assignment_name)
+-- Step 3: Select the highest scoring assignment (ranking = 1) per region
 SELECT assignment_name, region, impact_score, num_total_donations
 FROM rank
 WHERE ranking =1
