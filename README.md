@@ -3,7 +3,7 @@ There are:
 - Five mini projects using SQL.
 - Five mini projects using Python.
   
-All datasets are stored in the Portfolio/dataset directory.
+All datasets are stored in the Portfolio/datasets directory.
 
 Completed DataCamp SQL courses:
 - Introduction to SQL
