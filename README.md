@@ -5,7 +5,7 @@ There are:
   
 All datasets are stored in the Portfolio/dataset directory.
 
-The courses in SQL that I've completed in DataCamp platform:
+Completed DataCamp SQL courses:
 - Introduction to SQL
 - Intermediate SQL
 - Joining Data in SQL
@@ -19,8 +19,7 @@ The courses in SQL that I've completed in DataCamp platform:
 - Analyzing Business Data in SQL
 - Reporting in SQL
 
-
-The courses in Python that I've completed in DataCamp platform:
+Completed DataCamp Python courses
 - Introduction to Python
 - Intermediate Python
 - Data Manipulation with pandas
